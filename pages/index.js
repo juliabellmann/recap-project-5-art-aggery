@@ -1,35 +1,20 @@
 import ArtPieces from "@/_components/ArtPieces";
-import Spotlight from "@/_components/Spotlight";
-import useSWR from "swr";
+import Navigation from "@/_components/Navigation";
+import SpotlightPage from "@/_components/SpotlightPage";
 
-const fetcher = (url) => fetch(url).then((response) => response.json());
+export default function HomePage({artPieces}) {
 
-export default function HomePage() {
-  const { data, error } = useSWR(
-    "https://example-apis.vercel.app/api/art",
-    fetcher
-  );
-
-  if (error) return <div>API nicht voranden</div>;
-  if (!data) return <div>Daten können nicht geladen werden</div>;
-
-  const randomIndex = Math.floor(Math.random() * data.length);
-  console.log(randomIndex);
+  // console.log("Text test", artPieces);
+  const randomIndex = Math.floor(Math.random() * artPieces.length);
 
   return (
     <div>
-      <ArtPieces pieces={data} />
-      <Spotlight
-        image={data[randomIndex].imageSource}
-        artist={data[randomIndex].artist}
+      {/* <Navigation></Navigation> */}
+      {/* <ArtPieces pieces={artPieces} /> */}
+      <SpotlightPage
+        image={artPieces[randomIndex]?.imageSource}
+        artist={artPieces[randomIndex]?.artist}
       />
     </div>
   );
 }
-
-// function getRandomArtPieces(min, max) {
-//   const minPiece = Math.ceil(min);
-//   const maxPiece = Math.floor(max);
-//   return Math.floor(Math.random() * (maxPiece - minPiece) + minPiece);
-// }
-// const randomArtPieces = getRandomArtPieces(0, 12);
