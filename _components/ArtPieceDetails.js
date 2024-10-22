@@ -1,16 +1,27 @@
-import Image from "next/image";
-import { useRouter } from "next/router";
+import ArtPiecePreview from "./ArtPiecePreview";
 
-export default function ArtPieceDetails({ image, name, artist, year, genre }) {
-  const router = useRouter();
+export default function ArtPieceDetails({
+  image,
+  title,
+  artist,
+  year,
+  genre,
+  isFavorite,
+  onToggleFavorite,
+}) {
   return (
-    <div>
-      <Image src={image} width={100} height={200} alt="Image" />
-      <h2>{name}</h2>
-      <p>{artist}</p>
-      <p>{year}</p>
-      <p>{genre}</p>
-      <button onClick={() => router.push("/art-pieces")}>return</button>
-    </div>
+    <>
+      <ArtPiecePreview
+        image={image}
+        title={title}
+        artist={artist}
+        height={300}
+        width={300}
+        isFavorite={isFavorite}
+        onToggleFavorite={onToggleFavorite}
+      />
+      <p>jahr: {year}</p>
+      <p>genre: {genre}</p>
+    </>
   );
 }
