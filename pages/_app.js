@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }) {
       );
     }
   };
-  console.log("appjs test: ", artPieceInfo);
+  // console.log("appjs test: ", artPieceInfo);
 
   return (
     <>

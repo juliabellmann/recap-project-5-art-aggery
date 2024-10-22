@@ -1,14 +1,13 @@
 import ArtPieces from "@/_components/ArtPieces";
 
-export default function FavouritesPage({pieces, toggleFavorite, artPieceInfo, artPieces}) {
-    console.log("pieces test", pieces);
-    const favPieces = pieces.fiter((piece) => artPieceInfo.find((item) => item.slug === piece.slug)?.isFavourite );
+export default function FavouritesPage({artPieces, toggleFavorite, artPieceInfo}) {
+
+    const favPieces = artPieces?.filter((piece) => artPieceInfo.find((item) => item.slug === piece.slug && item.isFavorite));
     
     return (
         <div>
             <ArtPieces 
-            favPieces={favPieces}
-                pieces={artPieces}
+                pieces={favPieces}
                 toggleFavorite={toggleFavorite}
                 artPieceInfo={artPieceInfo}
             />

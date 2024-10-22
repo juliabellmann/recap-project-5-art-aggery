@@ -1,6 +1,5 @@
 import ArtPieceDetails from "@/_components/ArtPieceDetails";
 import { useRouter } from "next/router";
-import useSWR from "swr";
 
 export default function ArtPieceDetailPage({
   artPieces,

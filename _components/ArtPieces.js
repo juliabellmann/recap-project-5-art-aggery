@@ -3,6 +3,7 @@ import ArtPiecePreview from "./ArtPiecePreview";
 import Image from "next/image";
 
 export default function ArtPieces({ pieces, toggleFavorite, artPieceInfo }) {
+  console.log(pieces);
   return (
     <ul>
       {pieces.map((piece) => {
