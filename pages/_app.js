@@ -1,7 +1,7 @@
 import RootLayout from "@/_components/Layout";
 import GlobalStyle from "../styles";
 import useSWR from "swr";
-import { useState } from "react";
+import useLocalStorageState from 'use-local-storage-state';
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
     fetcher
   );
 
-  const [artPieceInfo, setArtPieceInfo] = useState([]);
+  const [artPieceInfo, setArtPieceInfo] = useLocalStorageState('key-test', {defaultValue: []});
 
   if (error) return <div>API nicht voranden</div>;
   if (!data) return <div>Daten können nicht geladen werden</div>;
